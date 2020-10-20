@@ -1,9 +1,15 @@
-import function
+import functions
 import graph
 import matplotlib.pyplot as plt
 
-temp=graph.Graph()
+from pydub import AudioSegment
+from pydub.playback import play
 
-temp.show()
 
-print(function.get_ser())
+fig=plt.figure()
+
+plt.subplot(211)
+plt.subplot(212)
+
+plt.show()
+

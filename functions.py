@@ -8,9 +8,7 @@ def test_time():
 
 
 def get_ser():
-    
     sers=[]
-    
     count=0
     while True:
         try:
