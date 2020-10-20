@@ -6,7 +6,6 @@ def display(x,y,alarm_value,audio_data):
     N=len(y)
     
     flag=False
-    fig,axes=plt.subplots(N)
     
     flag_alarm=False
     
@@ -31,16 +30,10 @@ def display(x,y,alarm_value,audio_data):
     plt.pause(0.01)
     
     return 
-
-fig,axes=plt.subplots(2)
-list_lines=[]
-for i in range(len(axes)):
-    lines, =axes[i].plot([0],[0])
-    list_lines.append(lines)
     
-
 x=[1,2,3]
 y=[[10,20,30],[10,20,30]]
+fig,axes=plt.subplots(2)
 
 
 while True:
