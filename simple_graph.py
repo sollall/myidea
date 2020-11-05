@@ -17,7 +17,6 @@ def display(x,y,alarm_value,audio_data):
         #axes[i].set_xlim((min(x),max(x)))
         axes[i].set_ylim((0,max(1,max(y[i]))))        
         
-        print(y[i])
         if abs(y[i][0]-y[i][-1])<alarm_value[i]:
             axes[i].set_facecolor("red")
             flag_alarm=True

@@ -25,9 +25,8 @@ sers=functions.get_ser()
 
 #N>=2じゃないとバグるの草
 N=len(sers)
-#N=2#テスト
+N=2#テスト
 x=[]
-df_x=[]
 y=[[] for i in range(len(sers))]
 past=str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))[:19]
 alarm=[0.1,0.1]
@@ -42,36 +41,25 @@ for i in range(N):
 #dataframe周り
 #temp_x={"Time":[]}
 #temp_y={k:[] for k in sers}
-temp_y={k:[] for k in (["Time"]+[str(n) for n in range(N)])}
-df=pd.DataFrame(temp_y)
-csv_name=past+".csv"
+df_data={k:[0] for k in (["Time"]+[str(n) for n in range(N)])}
+print(df_data)
 
-"""
-x=[1,2,3]
-y=[[10,20,30],[10,20,30]]
+csv_name=past+".csv"
 
 
 #テストここから
 while True:
 
-    x.append(x[-1]+1)
-    y[0].append(y[0][-1]+0.1)
-    y[1].append(y[1][-1]+1)
+    df_data["Time"].append(df_data["Time"][-1]+1)
+    df_data["0"].append(df_data["0"][-1]+0.1)
+    df_data["1"].append(df_data["1"][-1]+1)
     
     #リストを作っといてそこからデータフレームを構成するほうが早い？
-    measure=[x[-1]]+[y[n][-1] for n in range(N)]
-    measure=pd.Series(measure, index=df.columns,name=df.index[-1]+1 if len(df.index)!=0 else 0)
-    df=df.append(measure)
+    df=pd.DataFrame(df_data)
     
-    if len(x)>30:
-        x.pop(0)
-        y[0].pop(0)
-        y[1].pop(0)
-
-    simple_graph.display(x,y,[3,3],AudioSegment.from_mp3('/home/pi/Desktop/sample.mp3'))
+    simple_graph.display(df_data["Time"][-30:],[df_data["0"][-30:],df_data["1"]][-30:],[3,3],AudioSegment.from_mp3('/home/pi/Desktop/sample.mp3'))
     df.to_csv(csv_name)
 #テストここまで
-"""
 
 
 try:
