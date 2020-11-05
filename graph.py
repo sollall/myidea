@@ -20,9 +20,10 @@ class Graph:
             self.axes[i].set_facecolor("white")
 
     
-    def show(self,x,y):
+    def display(self,x,y):
         #グラフを見せる用
         import matplotlib.pyplot as plt
+        
         
         self.list_lines=[]
         for i in range(N):

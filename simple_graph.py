@@ -14,8 +14,8 @@ def display(x,y,alarm_value,audio_data):
         lines, =axes[i].plot(x,y[i])
         lines.set_data(x,y[i])
         
-        axes[i].set_xlim((min(x),max(x)))
-        axes[i].set_ylim((0,max(10,max(y[i]))))        
+        #axes[i].set_xlim((min(x),max(x)))
+        axes[i].set_ylim((0,max(1,max(y[i]))))        
         
         print(y[i])
         if abs(y[i][0]-y[i][-1])<alarm_value[i]:
@@ -36,6 +36,7 @@ y=[[10,20,30],[10,20,30]]
 fig,axes=plt.subplots(2)
 
 
+"""
 while True:
 
     x.append(x[-1]+1)
@@ -46,10 +47,9 @@ while True:
         y[0].pop(0)
         y[1].pop(0)
 
-    #関数じゃ無理じゃね Class化する？？？
     display(x,y,[3,3],AudioSegment.from_mp3('/home/pi/Desktop/sample.mp3'))
+"""
     
-    
-    
+        
     
     
