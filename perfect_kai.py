@@ -25,7 +25,7 @@ sers=functions.get_ser()
 
 #N>=2じゃないとバグるの草
 N=len(sers)
-N=2#テスト
+#N=2#テスト
 x=[]
 df_x=[]
 y=[[] for i in range(len(sers))]
@@ -46,15 +46,19 @@ temp_y={k:[] for k in (["Time"]+[str(n) for n in range(N)])}
 df=pd.DataFrame(temp_y)
 csv_name=past+".csv"
 
+"""
 x=[1,2,3]
 y=[[10,20,30],[10,20,30]]
 
+
+#テストここから
 while True:
 
     x.append(x[-1]+1)
     y[0].append(y[0][-1]+0.1)
     y[1].append(y[1][-1]+1)
     
+    #リストを作っといてそこからデータフレームを構成するほうが早い？
     measure=[x[-1]]+[y[n][-1] for n in range(N)]
     measure=pd.Series(measure, index=df.columns,name=df.index[-1]+1 if len(df.index)!=0 else 0)
     df=df.append(measure)
@@ -66,14 +70,16 @@ while True:
 
     simple_graph.display(x,y,[3,3],AudioSegment.from_mp3('/home/pi/Desktop/sample.mp3'))
     df.to_csv(csv_name)
+#テストここまで
+"""
 
 
 try:
     while True:
         now=str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))[:19]
-
+        
         if now!=past:
-            #値の更新
+            #時間の更新
             x.append(now)
             
             for i in range(N):
@@ -91,9 +97,9 @@ try:
                 y[0].pop(0)
                 y[1].pop(0)
                 
-            simple_graph.display(x,y,alarm,audio_data)
+            simple_graph.display(x,y,[3,3],AudioSegment.from_mp3('../sample.mp3'))
             
-            #csvの保存　毎回保存するのくそおそくなるきがする
+            #csvの保存　毎回保存してたらくそおそくなるきがする
             df.to_csv(csv_name)
             
             #今回は成功　次のloopへ

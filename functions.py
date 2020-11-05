@@ -13,6 +13,7 @@ def get_ser():
     while True:
         try:
             temp=serial.Serial("/dev/ttyUSB"+str(count), 2400)
+            sers.append(temp)
         except:
             break
         count+=1
@@ -33,9 +34,11 @@ def get_gram(ser):
         else:
             ans[i]="."
         ans[i]=str(ans[i])
-        
-    print(float("".join(ans)))
     
-    return 1#float("".join(ans))
+    try:
+        return float("".join(ans))
+    except:
+        return float(-1)
+    
     
     
