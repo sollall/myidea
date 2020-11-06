@@ -5,8 +5,6 @@ from pydub.playback import play
 def display(x,y,alarm_value,audio_data):
     N=len(y)
     
-    flag=False
-    
     flag_alarm=False
     
     for i in range(N):
@@ -23,10 +21,10 @@ def display(x,y,alarm_value,audio_data):
         else:
             axes[i].set_facecolor("white")
         
-    if flag:
+    if False:
         play(audio_data)
-    
-    plt.pause(0.01)
+    #ここ小さいほうが応答しやすい???
+    plt.pause(0.001)
     
     return 
     
